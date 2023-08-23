@@ -3,8 +3,8 @@
     <div class="row">
       <h1 class="title">Todo-app</h1>
     </div>
-    <div class="row">
-      <div class="col-7">
+
+
         <div class="section">
           <div class="form-group">
             <div class="form-item col">
@@ -14,70 +14,73 @@
                 id="inputData"
                 v-model="newItem"
                 type="text"
-                placeholder="add task ..."
+                placeholder="Enter task in here..."
               >
               <br>
               <button type="button" @click="addItem" class="btn btn-submit">ADD</button>
+                |  Total tasks: {{ totalTaskCount }}   |
+                Completed tasks: {{ completedTaskCount }}   | 
             </div>
           </div>
         </div>
-      </div>
-    </div>
+
+
 
     <table class="mt-3 listTodo">
-  <!-- <p v-if="toDos.length <= 0">Empty list</p> -->
-  <tr v-for="(item, index) in toDos" :key="index" class="item-wrappers">
-    <td>
-      <input type="checkbox" v-model="item.checked" class="item-checkbox">
-      <span class="checkmark"></span>
-    </td>
-    <td>
-      <div class="ok">
-        <span v-if="!item.editing" @click="startEdit(index)">
-          {{ item.value }}
-        </span>
-        <input
-          rows="5"
-          v-else
-          v-model="item.editedValue"
-          class="edit-input"
-          @keyup.enter="saveEdit(index)"
-        >
-      </div>
-    </td>
-    <td width="30%" class="btn-feature" >
-      <button
-        v-if="!item.editing && editingIndex !== index"
-        @click="deleteItem(index)"
-        style="width: 84.01px; !important"
-      >
-        Delete
-      </button>
-      <button
-        v-if="!item.editing && editingIndex !== index"
-        @click="startEdit(index); editingIndex = index"
-        style="width: 80.43px !important; background-color: #2ecc71;"
-      >
-        Edit
-      </button>
-      <button v-if="editingIndex === index" @click="cancelEdit(index)">
-        Cancel
-      </button>
-      <button style="width: 80.43px !important;" v-if="editingIndex === index" @click="saveEdit(index)">
-        Save
-      </button>
-
-
-
-
-      <!-- <button v-if="!item.checked" @click="markDone">Done</button>
-      <button v-else @click="markUndone">Cancel</button> -->
-
-    </td>
-  </tr>
-</table>
-
-  </div>
+      <p v-if="toDos.length <= 0">Empty list</p>
+      <tr v-for="(item, index) in toDos" :key="index" class="item-wrappers">
+        <td width="5%">
+          <input type="checkbox" v-model="item.checked" class="item-checkbox" @click="markDone(index)">
+          <span class="checkmark"></span>
+        </td>
+        <td>
+          <div class="ok">
+            <span 
+            v-if="!item.editing" 
+            @click="startEdit(index)"        
+            :class="{ 'completed-task': item.checked }"
+            >
+              {{ item.value }}
+            </span>
+            <input
+              rows="5"
+              v-else
+              v-model="item.editedValue"
+              class="edit-input"
+              @keyup.enter="saveEdit(index)"
+            >
+          </div>
+        </td>
+        <td width="30%" style="text-align: right;"  >
+          <div :class="{'btn-feature':item.checked}">
+            <button
+            v-if="!item.editing && editingIndex !== index"
+            @click="deleteItem(index)"
+            style="width: 84.01px; !important"
+            >
+            Delete
+            </button>
+            <button
+              v-if="!item.editing && editingIndex !== index"
+              @click="startEdit(index); editingIndex = index"
+              style="width: 80.43px !important;
+              height:36px ;
+              background-color: #47d181;
+              border: none;"
+              >
+              Edit
+            </button>
+            <button v-if="editingIndex === index" @click="cancelEdit(index)">
+              Cancel
+            </button>
+            <button style="width: 80.43px !important;height:36px ; background-color: #47d181; border: none;" v-if="editingIndex === index" @click="saveEdit(index)">
+              Save
+            </button>
+          </div>
+        </td>
+      </tr>
+    </table>
+</div>
 </template>
 
 <script>
@@ -88,9 +91,14 @@ export default {
       items: [],
       toDos: [],
       editingIndex: -1,
-
+      completedTaskCount: 0,
     };
   },
+  computed: {
+      totalTaskCount() {
+        return this.toDos.length;
+      }
+    },
   methods: {
     addItem() {
       if (this.newItem.trim() !== '') {
@@ -109,10 +117,10 @@ export default {
       }
     },
     deleteItem(index) {
-    this.toDos.splice(index, 1); 
+      this.toDos.splice(index, 1); 
     },
     startEdit(index) {
-      this.editingIndex = index; // Đặt chỉ mục của task đang được chỉnh sửa
+      this.editingIndex = index;
       this.toDos[index].editing = true;
       this.toDos[index].editedValue = this.toDos[index].value;
     },
@@ -121,20 +129,28 @@ export default {
         this.toDos[index].value = this.toDos[index].editedValue;
       }
       this.toDos[index].editing = false;
-      this.editingIndex = -1; // Khi lưu xong, đặt lại chỉ mục của task đang được chỉnh sửa
+      this.editingIndex = -1; 
     },
     cancelEdit(index) {
-    this.toDos[index].editing = false;
-    this.editingIndex = -1; // Đặt giá trị editingIndex về null khi cancel
+      this.toDos[index].editing = false;
+      this.editingIndex = -1; 
     },
     markDone(index) {
-      this.toDos[index].checked = true ;
-      this.toDos[index].checkedValue = this.toDos[index].value;
+      if (!this.toDos[index].checked) {
+        this.toDos[index].checked = true;
+        this.toDos[index].checkedValue = this.toDos[index].value;
+        this.completedTaskCount++;
+      }
+      else {
+        this.completedTaskCount--;
+      }
     },
-    markUndone(index) {
-    this.toDos[index].checked = false;
+    deleteItem(index) {
+      if (this.toDos[index].checked) {
+        this.completedTaskCount--; // Giảm số lượng công việc hoàn thành nếu task đã hoàn thành
+      }
+      this.toDos.splice(index, 1);
     },
-
   }
 };
 </script>
