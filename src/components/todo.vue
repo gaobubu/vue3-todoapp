@@ -3,8 +3,6 @@
     <div class="row">
       <h1 class="title">Todo-app</h1>
     </div>
-
-
         <div class="section">
           <div class="form-group">
             <div class="form-item col">
@@ -23,9 +21,6 @@
             </div>
           </div>
         </div>
-
-
-
     <table class="mt-3 listTodo">
       <p v-if="toDos.length <= 0">Empty list</p>
       <tr v-for="(item, index) in toDos" :key="index" class="item-wrappers">
@@ -147,7 +142,7 @@ export default {
     },
     deleteItem(index) {
       if (this.toDos[index].checked) {
-        this.completedTaskCount--; // Giảm số lượng công việc hoàn thành nếu task đã hoàn thành
+        this.completedTaskCount--;
       }
       this.toDos.splice(index, 1);
     },
