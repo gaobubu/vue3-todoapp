@@ -1,0 +1,207 @@
+:root {
+  --primary: #3498db;    /* Màu xanh dương */
+  --secondary: #e74d3c;  /* Màu đỏ */
+  --tertiary: #2ecc71;   /* Màu xanh lá cây */
+  --quaternary: #f39c12; /* Màu cam */
+  --dark: #34495e;       /* Màu xám đậm */
+  --light: #f5f5f5;      /* Màu xám nhạt */
+  --error: #e74c3c;      /* Màu đỏ */
+  --success: #d27065;    /* Màu xanh lá cây */
+  
+  --font: "Nunito", sans-serif;
+  --textSize: 16px;
+}
+
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html,
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  font-family: var(--font);
+  font-size: var(--textSize);
+}
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: left;
+}
+
+div.row .title {
+  display: flex;
+  margin: 2rem 0rem 1rem 2rem;
+}
+
+.title {
+  display: flex;
+  align-items: center;
+}
+
+.col {
+  flex: 1 0 0%;
+}
+.section .form-group {
+  margin-top: 1.625rem;
+  display: flex;
+  margin-left: -0.5rem;
+  margin-right: -0.5rem;
+}
+
+.form-group .col {
+  margin: 0 0.5rem;
+}
+
+.section.right .form-item {
+  margin-top: 2rem;
+}
+
+.section.right .form-item:last-child {
+  margin-top: 1.5rem;
+}
+.form-item{
+  width:  100%;
+  
+}
+.form-item label {
+  width: 100%;
+  display: block;
+  margin-bottom: 1rem;
+  color: var(--dark);
+  
+}
+.form-item input {
+  padding: 1rem;
+  background-color: var(--light);
+  color: Var(--dark);
+  border: 2px solid var(--primary);
+  width: 700px;
+  border-radius: 0.25rem;
+}
+.form-group button {
+  display: inline-block;
+  width: 700px;
+  color: var(--light);
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  background-color: var(--secondary);
+  border: 1px solid transparent;
+  padding: 0.5rem 1.5rem;
+  margin: 0.5rem 0;
+  font-size: 1rem;
+  font-weight: bold;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+.form-group button:hover {
+  background-color: var(--success);
+  border: 1px solid var(--success);
+}
+.item-checkbox {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  /* display: block;
+  position: relative;
+  cursor: pointer;
+  font-size: 1.125rem;
+  user-select: none; */
+}
+.item-checkbox input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+.listTodo {
+  width: 700px;
+  height: 50px;
+  color: var(--dark);
+  font-weight: bolder;
+  background-color: var(--light);
+  border: 1px solid var(--light);
+  border-radius: 0.25rem;  
+}
+.listTodo p {
+  font-size: 1rem;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+}
+table, tr {
+  border: 2px solid var(--primary);
+}
+
+
+
+
+.listTodo button {
+  display: inline-block;
+  color: var(--light);
+  background-color: var(--secondary);
+  border: 1px solid transparent;
+  text-align: center;
+  text-decoration: none;
+  vertical-align: middle;
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  margin: 0.5rem 5px 0.5rem ;
+  justify-items: center;
+  font-size: 1rem;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
+    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+ button:hover {
+  background-color: var(--success);
+  border: 1px solid var(--success);
+}
+.listTodo .item-wrapper {
+  flex: 1;
+  word-wrap: break-word; /* Wrap dòng khi dữ liệu quá dài */
+  white-space: pre-line;
+}
+
+.listTodo .edit-input {
+  /* padding: 1rem; */
+  background-color: var(--light);
+  width: 400px;
+  height: 40px;
+  border: 2px solid var(--primary);
+  border-radius: 0.25rem;
+  color: Var(--dark);
+  font-family: var(--font);
+  font-size: 1rem;
+  font-family: var(--font);
+  font-size: var(--textSize);
+}
+
+/* 
+.checkmark {
+  display: block;
+  height: 25px;
+  width: 50px;
+  background-color: red;
+  border-radius: 0.25rem;
+}
+
+.item-checkbox:checked + .checkmark {
+
+  background-color: #202726;
+  opacity: 1;
+} */
