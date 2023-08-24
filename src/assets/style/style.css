@@ -1,21 +1,30 @@
 :root {
   --primary: #3498db;
-  --secondary: #e74d3c;
-  --tertiary: #2ecc71;
-  --quaternary: #f39c12; 
-  --dark: #1f3d3c;       
-  --light: #f5eaea;      
-  --error: #e74c3c;      
-  --success: #d27065;    
-  
+  --secondary: #e8402d;
+  --dark: #1b4a49;
+  --light: #f5eaea;
+  --success: #d27065;
+
   --font: "Nunito", sans-serif;
   --textSize: 16px;
 }
+
 * {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
 }
+svg{
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  fill: red;
+}
+
+svg :hover {
+  fill:#ff5b49
+}
+
 html,
 body {
   background-color: var(--light);
@@ -23,6 +32,7 @@ body {
   font-family: var(--font);
   font-size: var(--textSize);
 }
+
 .container {
   display: flex;
   align-items: center;
@@ -32,58 +42,74 @@ body {
   margin: 0 auto;
   padding: 0 1rem;
 }
+
 .row {
   display: flex;
   flex-wrap: wrap;
   justify-content: left;
 }
-div.row .title {
-  display: flex;
-  margin: 2rem 2rem 0 2rem;
-}
+
 .title {
   display: flex;
   align-items: center;
+  margin: 2.5rem;
+  font-size: 3.25rem;
 }
+
 .col {
   flex: 1 0 0%;
 }
-.section .form-group {
+
+.form-group {
   margin-top: 1.625rem;
   display: flex;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
 }
+
 .form-group .col {
   margin: 0 0.5rem;
 }
-.section.right .form-item {
-  margin-top: 2rem;
-}
-.section.right .form-item:last-child {
-  margin-top: 1.5rem;
-}
-.form-item{
-  width:  100%;
-}
-.form-item label {
+
+.form-item {
   width: 100%;
+}
+
+.form-item h2 {
   display: block;
-  margin-bottom: 1rem;
+  margin-bottom: -1.45rem;
+  color: var(--dark);
+  font-weight: normal;
+}
+
+.quantity {
+  display: flex;
+  position: relative;
+  left: 461px;
+  bottom: 0.25rem;
+  padding: 0.25rem;
+  width:fit-content;
+  border-radius: 0.25rem;
+  background-color: #20565411;
   color: var(--dark);
 }
+
+.quantity p{
+  font-weight: bold;
+  border-radius: 0.25rem;
+  color: var(--secondary);
+}
+
 .form-item input {
   font-size: var(--textSize);
   padding: 1rem;
   background-color: var(--light);
-  color: Var(--dark);
+  color: var(--dark);
   border: 1px solid var(--primary);
   width: 700px;
   border-radius: 0.25rem;
 }
+
 .form-group button {
   display: inline-block;
-  /* width: 435px; */
   color: var(--light);
   text-align: center;
   text-decoration: none;
@@ -96,74 +122,106 @@ div.row .title {
   font-size: 1rem;
   font-weight: bold;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
+
 .form-group button:hover {
   background-color: var(--success);
   border: 1px solid var(--success);
 }
+
 .listTodo {
+  display: flex;
   width: 700px;
   color: var(--dark);
-  background-color: var(--light);
-  /* border: 0.5px solid #77add0; */
-  border-radius: 0.25rem;  
+  background-color:var(--light);
+  border-radius: 0.15rem;
+  border: 1px solid #58a7dbbb;
+  margin-bottom: 0.5rem;
+  height: 50px;
+
 }
-.listTodo p {
-  font-size: var(--textSize);
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
-  opacity: 0.5;
+
+.editing {
+  box-shadow: 0px 0px 5px 1px rgb(130, 130, 130);
+  border-radius: 0.25rem;
 }
-.listTodo span {
-  font-size: 1.25rem;
-  white-space: pre-line;
-  width: 400px;
-}
-.listTodo .completed-task {
-  text-decoration: line-through;
-  color: var(--dark);
-  opacity: 0.4; 
-  transition: opacity 0.1s ease-in-out,
-              text-decoration 0.1s ease-in-out; 
-}
-div .btn-feature{
+
+.item-wrappers {
   display: flex;
-  margin: 0 0 0 2rem;
-  opacity: 0.4; 
-  transition: opacity 0.1s ease-in-out; 
+  align-items: center;
+  justify-content:center;
+  width: 700px;
 }
-.listTodo button {
+
+.checkbox-wrapper {
+  /* flex: 1; */
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  width: 50px;
+}
+
+.task-wrapper {
+  flex: 4;
+}
+
+.task-wrapper .ok {
+  width: 550px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-wrapper span {
+  padding: 0.75rem;
+  font-size: 1;
+}
+
+.task-wrapper .edit-input {
+  font-size: var(--textSize);
+  color: var(--dark);
+  background-color: var(--light);
+  border: 1px solid var(--primary);
+  border-radius: 0.25rem;
+  padding: 0.25rem;
+  width: 550px;
+
+}
+
+.item-checkbox {
+  width: 1.1rem;
+  height: 1.1rem;
+}
+
+.completed-task {
+  text-decoration: line-through;
+  opacity: 0.4;
+  transition: opacity 0.1s ease-in-out, text-decoration 0.1s ease-in-out;
+}
+
+.disable {
+  opacity: 0.4;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.btn-feature {
+  opacity: 0.4;
+  transition: opacity 0.1s ease-in-out;
+}
+
+.edit-buttons button {
+  width: max-content;
+  position: relative;
+  text-align: center;
   display: inline-block;
   color: var(--light);
-  background-color: #d33e2e;
   border: 1px solid transparent;
-  text-align: center;
-  text-decoration: none;
-  vertical-align: middle;
   cursor: pointer;
-  padding: 0.5rem 1rem;
-  margin: 0.5rem 5px 0.5rem ;
-  justify-items: center;
-  font-size: 1rem;
-  border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out,
-    border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  margin: 0.5rem 0rem 0.5rem 0rem;
+  padding: 0.5rem 0.5rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
- button:hover {
-  background-color: var(--success);
-  border: 1px solid var(--success);
-}
-.listTodo .edit-input {
-  background-color: var(--light);
-  border: 2px solid #67b1e2;
-  width: 400px;
-  height: 36px;
-  border-radius: 0.25rem;
-  color: Var(--dark);
-  font-family: var(--font);
-  font-size: 1.25rem;
-}
+
+
 
