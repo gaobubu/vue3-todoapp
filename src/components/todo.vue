@@ -157,6 +157,7 @@ export default {
     deleteItem(index) {
       this.toDos.splice(index, 1);
       this.editingIndex[index] = true;
+      this.editingIndex.splice(index, 1);
     },
   },
 };
