@@ -1,9 +1,9 @@
 :root {
-  --primary: #3498db;
+  --primary: #2b97e0;
   --secondary: #e8402d;
-  --dark: #1b4a49;
-  --light: #f5eaea;
-  --success: #d27065;
+  --dark: #363636;
+  --light: #ffffff;
+  --success: #9bb29b ;
 
   --font: "Nunito", sans-serif;
   --textSize: 16px;
@@ -14,33 +14,37 @@
   margin: 0;
   box-sizing: border-box;
 }
-svg{
+
+svg {
   display: block;
   width: 1.5rem;
   height: 1.5rem;
   fill: red;
 }
 
-svg :hover {
-  fill:#ff5b49
+svg:hover {
+  fill: #ff5b49;
 }
 
-html,
-body {
-  background-color: var(--light);
+html, body {
+  background-color: #bbccea;
   color: var(--dark);
   font-family: var(--font);
   font-size: var(--textSize);
 }
 
 .container {
+  background-color: #E8FFCE;
   display: flex;
   align-items: center;
   justify-content: flex-start;
   flex-direction: column;
-  width: 100%;
-  margin: 0 auto;
+  width: fit-content;
+  margin: 1rem auto;
   padding: 0 1rem;
+  box-shadow: 0px 0px 8px 0px black;
+  border-radius: 0.5rem;
+
 }
 
 .row {
@@ -61,7 +65,7 @@ body {
 }
 
 .form-group {
-  margin-top: 1.625rem;
+  margin-top: 0rem;
   display: flex;
 }
 
@@ -86,43 +90,42 @@ body {
   left: 461px;
   bottom: 0.25rem;
   padding: 0.25rem;
-  width:fit-content;
+  width: fit-content;
   border-radius: 0.25rem;
-  background-color: #20565411;
+  background-color: #acfadfc3; 
   color: var(--dark);
 }
 
-.quantity p{
+.quantity p {
   font-weight: bold;
-  border-radius: 0.25rem;
-  color: var(--secondary);
+  color: black;
 }
 
 .form-item input {
   font-size: var(--textSize);
-  padding: 1rem;
+  padding: 0.5rem;
   background-color: var(--light);
   color: var(--dark);
-  border: 1px solid var(--primary);
+  border: 1px solid skyblue;
   width: 700px;
-  border-radius: 0.25rem;
+  border-radius: 0.2rem;
 }
 
 .form-group button {
   display: inline-block;
-  color: var(--light);
+  color: white;
   text-align: center;
   text-decoration: none;
   vertical-align: middle;
   cursor: pointer;
-  background-color: var(--secondary);
+  background-color: #7c917b ;
   border: 1px solid transparent;
   padding: 0.5rem 1rem;
-  margin: 0.5rem 0;
+  margin: 0.5rem 0rem;
   font-size: 1rem;
   font-weight: bold;
   border-radius: 0.25rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
 
 .form-group button:hover {
@@ -130,32 +133,25 @@ body {
   border: 1px solid var(--success);
 }
 
-.listTodo {
+.list-todo {
   display: flex;
   width: 700px;
   color: var(--dark);
-  background-color:var(--light);
-  border-radius: 0.15rem;
-  border: 1px solid #58a7dbbb;
+  background-color: var(--light);
   margin-bottom: 0.5rem;
   height: 50px;
-
-}
-
-.editing {
-  box-shadow: 0px 0px 5px 1px rgb(130, 130, 130);
-  border-radius: 0.25rem;
+  border: 1px solid #81c7df;
+  border-radius: 0.2rem;
 }
 
 .item-wrappers {
   display: flex;
   align-items: center;
-  justify-content:center;
+  justify-content: center;
   width: 700px;
 }
 
 .checkbox-wrapper {
-  /* flex: 1; */
   display: flex;
   align-items: center;
   padding: 1rem;
@@ -171,22 +167,22 @@ body {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  color: black;
 }
 
 .task-wrapper span {
-  padding: 0.75rem;
-  font-size: 1;
+  padding: 0.5rem;
+  font-size: 1.25rem;
 }
 
-.task-wrapper .edit-input {
-  font-size: var(--textSize);
+.ok .edit-input {
+  font-size: 1.25rem;
   color: var(--dark);
   background-color: var(--light);
-  border: 1px solid var(--primary);
-  border-radius: 0.25rem;
+  border: 1px solid #39B5E0;
+  border-radius: 0.5rem;
   padding: 0.25rem;
   width: 550px;
-
 }
 
 .item-checkbox {
@@ -197,7 +193,7 @@ body {
 .completed-task {
   text-decoration: line-through;
   opacity: 0.4;
-  transition: opacity 0.1s ease-in-out, text-decoration 0.1s ease-in-out;
+  transition: opacity 0.2s ease-in-out, text-decoration 0.2s ease-in-out;
 }
 
 .disable {
@@ -211,6 +207,7 @@ body {
 }
 
 .edit-buttons button {
+  background-color: transparent;
   width: max-content;
   position: relative;
   text-align: center;
@@ -220,8 +217,5 @@ body {
   cursor: pointer;
   margin: 0.5rem 0rem 0.5rem 0rem;
   padding: 0.5rem 0.5rem;
-  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  transition: color 0.2s ease-in-out, background-color 0.2s ease-in-out, border-color 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
 }
-
-
-
