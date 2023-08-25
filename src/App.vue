@@ -1,14 +1,14 @@
 <template>
-  <todo/>
+  <Todo />
 </template>
 
 <script>
-import todo from './components/todo.vue'
+import Todo from './components/Todo.vue'
 
 export default {
   name: 'App',
   components: {
-    todo
+    Todo
   }
 }
 </script>
