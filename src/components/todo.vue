@@ -98,15 +98,7 @@
         </div>
       </div>
     </div>
-  </div>
-  <div class="modal" v-if="showDeleteModal">
-      <div class="modal-content">
-        <p>Are you sure you want to delete this task?</p>
-        <button @click="confirmDelete">Yes</button>
-        <button @click="cancelDelete">No</button>
-      </div>
-    </div>
-  
+  </div>  
 </template>
 
 <script>
