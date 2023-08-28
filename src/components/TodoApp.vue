@@ -34,7 +34,7 @@
       v-for="(item, index) in todosItem"
       :key="index"
     >
-      <div class="item-wrappers">
+    <div class="item-wrappers">
         <div class="checkbox-wrapper">
           <input type="checkbox" v-model="item.checked" class="item-checkbox" @click="markDone(index)">
           <span class="checkmark"></span>
@@ -103,7 +103,7 @@
 
 <script>
 export default {
-  data() {
+    data() {
     return {
       newItem: '',
       todosItem: [],
@@ -140,7 +140,7 @@ export default {
 
     saveEdit(index) {
       if (this.todosItem[index].editedValue.trim() !== '') {
-        this.todosItem[index].value = this.todosItem[index].editedValue;
+          this.todosItem[index].value = this.todosItem[index].editedValue;
       }
       this.todosItem[index].editing = false;
       this.editingIndex[index] = false;
@@ -150,6 +150,11 @@ export default {
       this.todosItem[index].editing = false;
       this.editingIndex[index] = false;
     },
+    deleteItem(index) {
+      this.todosItem.splice(index, 1);
+      this.editingIndex[index] = true;
+      this.editingIndex.splice(index, 1);
+      },
 
     markDone(index) {
       if (!this.todosItem[index].checked) {
@@ -162,12 +167,6 @@ export default {
         this.completedTaskCount--;
         this.checkboxChecked = false;
       }
-    },
-
-    deleteItem(index) {
-      this.todosItem.splice(index, 1);
-      this.editingIndex[index] = true;
-      this.editingIndex.splice(index, 1);
     },
   },
 };
